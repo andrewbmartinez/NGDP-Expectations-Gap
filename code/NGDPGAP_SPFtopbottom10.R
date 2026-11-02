@@ -201,4 +201,4 @@ gx <- gx + scale_x_yearqtr(
 
 gx <- gx + xlab("") + ylab("Percent")
 gx <- gx + ylim(y_min, y_max)
-ggsave("ngdp_gap_figure.png", plot = gx, width = 10, height = 6, dpi = 300)
+ggsave("figures/ngdp_gap_figure.png", plot = gx, width = 10, height = 6, dpi = 300)
