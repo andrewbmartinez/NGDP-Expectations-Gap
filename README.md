@@ -1,4 +1,4 @@
-# Output Gap Forecasts
+# The Nominal GDP Expectations Gap
 
 This repository tracks and visualizes the U.S. NGDP Expectations Gap using microdata from the **Survey of Professional Forecasters (SPF)** (Federal Reserve Bank of Philadelphia) and historical GDP data from **FRED**.
 
