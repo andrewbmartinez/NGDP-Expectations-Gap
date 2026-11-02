@@ -1,14 +1,11 @@
 rm(list=ls())
 
-setwd("/Users/amartinez/DRIVEAU/Research/OutputGaps")
-
 library(readxl)
 library(tidyquant)
 library(tidyverse)
 temp = tempfile(fileext = ".xlsx")
 
-
-#Getting latest actual data from FRED
+#Getting latest data from FRED
 ngdp_ALL <- tq_get("GDP", get="economic.data",from="1968-01-01")
 ngdp_ALL <- ngdp_ALL %>% mutate(YEAR=year(date), QUARTER=(month(date)-1) %/% 3 + 1)
 ngdp_ALL <- subset(ngdp_ALL,select=-c(symbol,date))
@@ -112,7 +109,6 @@ ngdp_low <- ngdp
 ngdp_hi <- ngdp
 ngdp_med <- ngdp
 
-# Fixed typo from original code where ngdp_med mapped to ngdp_max variables
 ngdp_low$NGDP1 <- ngdp_low$NGDPL*(1+ngdp_forc_low$DGDP2[-c(nrow(rgdp10_forc_low))])
 ngdp_hi$NGDP1 <- ngdp_hi$NGDPL*(1+ngdp_forc_hi$DGDP2[-c(nrow(rgdp10_forc_hi))])
 ngdp_med$NGDP1 <- ngdp_med$NGDPL*(1+ngdp_forc_med$DGDP2[-c(nrow(rgdp10_forc_med))])
