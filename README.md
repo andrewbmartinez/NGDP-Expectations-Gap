@@ -10,4 +10,4 @@ The methodology is described in Martinez, Schibuola and Beckworth (2026) "The Re
 ## Latest Estimates
 ![NGDP Gap](ngpd_gap_figure.png)
 
-*Last updated: November 2026*
+*Last updated: 2026-11-02 19:40 UTC*
