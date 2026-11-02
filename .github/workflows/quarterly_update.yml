@@ -32,11 +32,18 @@ jobs:
       - name: Run R script to generate figure
         run: NGDPGAP_SPFtopbottom10.R
 
-      - name: Commit and push updated figure
+      - name: Update README with timestamp and figure
+        run: |
+          echo "# Output Gap Forecasts" > README.md
+          echo "" >> README.md
+          echo "![Output Gap Figure](ngdp_gap_figure.png)" >> README.md
+          echo "" >> README.md
+          echo "*Last updated: $(date -u +'%Y-%m-%d %H:%M %Z')*" >> README.md
+
+      - name: Commit and push updated figure and README
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add output_gap_figure.png
-          # Only commit if there are changes
-          git diff-index --quiet HEAD || git commit -m "Auto-update quarterly output gap figure"
+          git add output_gap_figure.png README.md
+          git diff-index --quiet HEAD || git commit -m "Auto-update quarterly figure and README timestamp"
           git push
