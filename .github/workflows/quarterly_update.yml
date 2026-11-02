@@ -30,7 +30,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Run R script to generate figure
-        run: Rscript NGDPGAP_SPFtopbottom.R
+        run: Rscript NGDPGAP_SPFtopbottom10.R
 
       - name: Update README timestamp
         run: |
