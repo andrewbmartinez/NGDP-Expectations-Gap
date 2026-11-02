@@ -5,7 +5,7 @@ This repository tracks and visualizes the U.S. NGDP Expectations Gap using micro
 
 
 ## Methodology
-The methodology is described in Martinez, Schibuola and Beckworth (2026) "The Reliability of the Nominal GDP Expectations Gap", International Journal of Central Bank Volume 22, No 2, https://www.ijcb.org/journal/v22n2/reliability-nominal-gdp-expectations-gap.
+The methodology is described in Martinez, Schibuola and Beckworth (2026) "The Reliability of the Nominal GDP Expectations Gap", International Journal of Central Bank Volume 22, No 2 (April 2026), https://www.ijcb.org/journal/v22n2/reliability-nominal-gdp-expectations-gap.
 
 ## Latest Estimates
 ![NGDP Gap](ngpd_gap_figure.png)
