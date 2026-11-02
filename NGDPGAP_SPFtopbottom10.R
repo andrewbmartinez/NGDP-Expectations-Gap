@@ -167,14 +167,17 @@ recessions <- recessions %>%
 
 latest_year <- max(as.numeric(ngdp$date), na.rm = TRUE)
 upper_limit <- latest_year + 1
+
 # Generate axis breaks every 5 years dynamically
 dynamic_breaks <- seq(1975, ceiling(upper_limit), by = 5)
 
+# Find the last non-missing value of NGAPmed
+last_ngapmed <- tail(ngdp$NGAPmed[!is.na(ngdp$NGAPmed)], 1)
 
 gx <- ggplot()
 gx <- gx + geom_rect(recessions, mapping= aes(xmin=Peak, xmax=Trough, ymin=-Inf, ymax=Inf), fill='grey', alpha=0.2)
 gx <- gx + geom_line(ngdp, mapping=aes(y=zero, x=date), color="black" , size=0.5, linetype="dotted" ) 
-gx <- gx + geom_line(ngdp, mapping=aes(y=2.5, x=date), color="grey" , size=0.5, linetype="dotted" ) 
+gx <- gx + geom_line(ngdp, mapping=aes(y=last_ngapmed, x=date), color="grey" , size=0.5, linetype="dotted" )
 gx <- gx + theme_classic()
 gx <- gx + theme(plot.margin = unit(c(0.1,0.1,0.1,0.1),"cm"))
 gx <- gx + theme(text=element_text(family="Times", size=12), axis.text.x=element_text(size=14), axis.text.y=element_text(size=16))
