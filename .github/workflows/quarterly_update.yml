@@ -2,8 +2,8 @@ name: Quarterly Figure Update
 
 on:
   schedule:
-    # Runs at 00:00 UTC on the 2nd day of Feb, May, Aug, and Nov
-    - cron: '0 0 2 2,5,8,11 *'
+    # Runs at 00:00 UTC on the 15th day of Jan, Apr, Jul, and Oct
+    - cron: '0 0 15 1,4,7,10 *'
   workflow_dispatch: # Allows you to trigger the run manually from the GitHub UI
 
 jobs:
@@ -30,20 +30,17 @@ jobs:
         shell: Rscript {0}
 
       - name: Run R script to generate figure
-        run: NGDPGAP_SPFtopbottom10.R
+        run: Rscript NGDPGAP_SPFtopbottom.R
 
-      - name: Update README with timestamp and figure
+      - name: Update README timestamp
         run: |
-          echo "# Output Gap Forecasts" > README.md
-          echo "" >> README.md
-          echo "![Output Gap Figure](ngdp_gap_figure.png)" >> README.md
-          echo "" >> README.md
-          echo "*Last updated: $(date -u +'%Y-%m-%d %H:%M %Z')*" >> README.md
+          sed -i "s/^\*Last updated:.*/\*Last updated: $(date -u +'%Y-%m-%d %H:%M %Z')\*/" README.md
 
       - name: Commit and push updated figure and README
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add output_gap_figure.png README.md
+          git add ngdp_gap_figure.png README.md
+          # Only commit if there are changes
           git diff-index --quiet HEAD || git commit -m "Auto-update quarterly figure and README timestamp"
           git push
