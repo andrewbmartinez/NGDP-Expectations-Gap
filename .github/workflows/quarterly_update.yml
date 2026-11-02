@@ -30,7 +30,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Run R script to generate figure
-        run: Rscript NGDPGAP_SPFtopbottom10.R
+        run: Rscript code/NGDPGAP_SPFtopbottom10.R
 
       - name: Update README timestamp
         run: |
@@ -40,7 +40,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add ngdp_gap_figure.png README.md
+          git add figures/ngdp_gap_figure.png README.md
           # Only commit if there are changes
           git diff-index --quiet HEAD || git commit -m "Auto-update quarterly figure and README timestamp"
           git push
