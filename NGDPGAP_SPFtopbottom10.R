@@ -170,6 +170,10 @@ dynamic_breaks <- seq(1975, ceiling(upper_limit), by = 5)
 # Find the last non-missing value of NGAPmed
 last_ngapmed <- tail(ngdp$NGAPmed[!is.na(ngdp$NGAPmed)], 1)
 
+# Calculate dynamic y-axis limits with a buffer 
+y_min <- min(ngdp$NGAPhi, na.rm = TRUE) - 0.1
+y_max <- max(ngdp$NGAPlow, na.rm = TRUE) + 0.1
+
 gx <- ggplot()
 gx <- gx + geom_rect(recessions, mapping= aes(xmin=Peak, xmax=Trough, ymin=-Inf, ymax=Inf), fill='grey', alpha=0.2)
 gx <- gx + geom_line(ngdp, mapping=aes(y=zero, x=date), color="black" , size=0.5, linetype="dotted" ) 
@@ -196,5 +200,5 @@ gx <- gx + scale_x_yearqtr(
 )
 
 gx <- gx + xlab("") + ylab("Percent")
-gx <- gx + ylim(-14,12.2)
+gx <- gx + ylim(y_min, y_max)
 ggsave("ngdp_gap_figure.png", plot = gx, width = 10, height = 6, dpi = 300)
