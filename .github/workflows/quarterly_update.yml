@@ -2,8 +2,8 @@ name: Quarterly Figure Update
 
 on:
   schedule:
-    # Runs at 00:00 UTC on the 15th day of Jan, Apr, Jul, and Oct
-    - cron: '0 0 15 1,4,7,10 *'
+    # Runs at 00:00 UTC on the 2nd day of Feb, May, Aug, and Nov
+    - cron: '0 0 2 2,5,8,11 *'
   workflow_dispatch: # Allows you to trigger the run manually from the GitHub UI
 
 jobs:
